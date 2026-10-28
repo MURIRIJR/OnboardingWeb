@@ -1,1 +1,98 @@
-/* You can add global styles to this file, and also import other style files */
+/* ===================================
+   GLOBAL APP STYLING
+=================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Source Sans 3", sans-serif;
+  background: #f6f7f9;
+  color: #2f3542;
+  min-height: 100vh;
+}
+
+/* Typography */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Source Sans 3", sans-serif;
+  color: #1f2a60;
+  font-weight: 600;
+}
+
+p,
+span,
+label,
+input,
+select,
+button,
+textarea,
+a,
+td,
+th {
+  font-family: "Source Sans 3", sans-serif;
+}
+
+/* Links */
+
+a {
+  text-decoration: none;
+}
+
+/* Buttons */
+
+button {
+  font-family: "Source Sans 3", sans-serif;
+}
+
+/* Inputs */
+
+input,
+select,
+textarea {
+  font-family: "Source Sans 3", sans-serif;
+}
+
+/* Smooth appearance */
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* Completed step (address.html uses circle.complete) */
+.stepper .circle.complete {
+  background: rgba(11, 58, 110, 0.08);
+  border-color: var(--cg-primary);
+  color: var(--cg-primary);
+}
+
+.stepper .step:has(.circle.complete) span {
+  color: var(--cg-primary);
+}
+
+.stepper .step:has(.circle.complete) + .step-line {
+  background: var(--cg-primary);
+}
+
+.field select {
+  width: 100%;
+  box-sizing: border-box;
+}
+:root {
+  --primary: #2563eb;
+  --secondary: #0f172a;
+  --success: #16a34a;
+  --warning: #f59e0b;
+  --danger: #dc2626;
+  --background: #f4f7fc;
+  --card: #ffffff;
+}
