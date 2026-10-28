@@ -1,0 +1,220 @@
+<div class="container">
+
+  <div class="card">
+
+    <div class="header">
+      Client Onboarding
+    </div>
+
+    <div class="stepper">
+      <div class="step active">
+        <div class="circle">1</div>
+        <span>Personal</span>
+      </div>
+
+      <div class="step-line"></div>
+
+      <div class="step">
+        <div class="circle">2</div>
+        <span>Address</span>
+      </div>
+
+      <div class="step-line"></div>
+
+      <div class="step">
+        <div class="circle">3</div>
+        <span>Review</span>
+      </div>
+    </div>
+
+    @if (serviceError) {
+      <p class="error-text">{{ serviceError }}</p>
+    }
+
+    <form [formGroup]="personalForm">
+
+      <div class="form-grid">
+
+        <!-- Title -->
+        <div class="field">
+          <select formControlName="title">
+            <option value="">Title *</option>
+            <option>Mr</option>
+            <option>Mrs</option>
+            <option>Ms</option>
+            <option>Dr</option>
+          </select>
+          @if (personalForm.get('title')?.touched && personalForm.get('title')?.invalid) {
+            <small class="error-text">Title is required</small>
+          }
+        </div>
+
+        <!-- First Name -->
+        <div class="field">
+          <input type="text" formControlName="firstName" placeholder="First Name *">
+          @if (personalForm.get('firstName')?.touched && personalForm.get('firstName')?.errors?.['required']) {
+            <small class="error-text">First name is required</small>
+          }
+          @if (personalForm.get('firstName')?.touched && personalForm.get('firstName')?.errors?.['minlength']) {
+            <small class="error-text">First name must be at least 2 characters</small>
+          }
+        </div>
+
+        <!-- Middle Name -->
+        <div class="field">
+          <input type="text" formControlName="middleName" placeholder="Middle Name">
+        </div>
+
+        <!-- Last Name -->
+        <div class="field">
+          <input type="text" formControlName="lastName" placeholder="Last Name *">
+          @if (personalForm.get('lastName')?.touched && personalForm.get('lastName')?.errors?.['required']) {
+            <small class="error-text">Last name is required</small>
+          }
+          @if (personalForm.get('lastName')?.touched && personalForm.get('lastName')?.errors?.['minlength']) {
+            <small class="error-text">Last name must be at least 2 characters</small>
+          }
+        </div>
+
+        <!-- DOB -->
+        <div class="field">
+          <input type="date" formControlName="dateOfBirth">
+          @if (personalForm.get('dateOfBirth')?.touched && personalForm.get('dateOfBirth')?.invalid) {
+            <small class="error-text">Date of birth is required</small>
+          }
+        </div>
+
+        <!-- Gender -->
+        <div class="field">
+          <select formControlName="gender">
+            <option value="">Gender *</option>
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+          @if (personalForm.get('gender')?.touched && personalForm.get('gender')?.invalid) {
+            <small class="error-text">Gender is required</small>
+          }
+        </div>
+
+        <!-- Marital Status -->
+        <div class="field">
+          <select formControlName="maritalStatus">
+            <option value="">Marital Status *</option>
+            <option>Single</option>
+            <option>Married</option>
+          </select>
+          @if (personalForm.get('maritalStatus')?.touched && personalForm.get('maritalStatus')?.invalid) {
+            <small class="error-text">Marital status is required</small>
+          }
+        </div>
+
+        <!-- Nationality -->
+        <div class="field">
+          <select formControlName="nationality">
+            <option value="">Nationality *</option>
+            @for (n of nationalities; track n) {
+              <option [value]="n">{{ n }}</option>
+            }
+          </select>
+          @if (personalForm.get('nationality')?.touched && personalForm.get('nationality')?.invalid) {
+            <small class="error-text">Nationality is required</small>
+          }
+        </div>
+
+        <!-- Employment Status -->
+        <div class="field">
+          <select formControlName="employmentStatus">
+            <option value="">Employment Status *</option>
+            <option>Employed</option>
+            <option>Self Employed</option>
+            <option>Student</option>
+            <option>Unemployed</option>
+          </select>
+          @if (personalForm.get('employmentStatus')?.touched && personalForm.get('employmentStatus')?.invalid) {
+            <small class="error-text">Employment status is required</small>
+          }
+        </div>
+
+        <!-- ID Type -->
+        <div class="field">
+          <input type="text" formControlName="idType" placeholder="ID Type *">
+          @if (personalForm.get('idType')?.touched && personalForm.get('idType')?.invalid) {
+            <small class="error-text">ID type is required</small>
+          }
+        </div>
+
+        <!-- ID Number -->
+        <div class="field">
+          <input type="text" formControlName="idNumber" placeholder="ID Number *">
+          @if (personalForm.get('idNumber')?.touched && personalForm.get('idNumber')?.errors?.['required']) {
+            <small class="error-text">ID number is required</small>
+          }
+          @if (personalForm.get('idNumber')?.touched && personalForm.get('idNumber')?.errors?.['pattern']) {
+            <small class="error-text">ID number must contain exactly 11 digits</small>
+          }
+          @if (personalForm.get('idNumber')?.errors?.['duplicate']) {
+            <small class="error-text">
+              A client with this ID type and ID number already exists
+            </small>
+          }
+        </div>
+
+        <!-- ID Expiry -->
+        <div class="field">
+          <input type="date" formControlName="idExpiryDate">
+          @if (personalForm.get('idExpiryDate')?.touched && personalForm.get('idExpiryDate')?.invalid) {
+            <small class="error-text">ID expiry date is required</small>
+          }
+        </div>
+
+        <!-- Email -->
+        <div class="field">
+          <input type="email" formControlName="email" placeholder="Email *">
+          @if (personalForm.get('email')?.touched && personalForm.get('email')?.errors?.['required']) {
+            <small class="error-text">Email is required</small>
+          }
+          @if (personalForm.get('email')?.touched && personalForm.get('email')?.errors?.['email']) {
+            <small class="error-text">Enter a valid email address</small>
+          }
+        </div>
+
+        <!-- Mobile Number -->
+        <div class="field">
+          <input type="text" formControlName="mobileNumber" placeholder="Mobile Number *">
+          @if (personalForm.get('mobileNumber')?.touched && personalForm.get('mobileNumber')?.errors?.['required']) {
+            <small class="error-text">Mobile number is required</small>
+          }
+          @if (personalForm.get('mobileNumber')?.touched && personalForm.get('mobileNumber')?.errors?.['pattern']) {
+            <small class="error-text">Invalid mobile number format</small>
+          }
+        </div>
+
+        <!-- Occupation -->
+        <div class="field">
+          <input type="text" formControlName="occupation" placeholder="Occupation *">
+          @if (personalForm.get('occupation')?.touched && personalForm.get('occupation')?.invalid) {
+            <small class="error-text">Occupation is required</small>
+          }
+        </div>
+
+      </div>
+
+      <div class="buttons">
+        <button type="button" class="cancel-btn" (click)="cancel()">
+          Cancel
+        </button>
+
+        <button
+          type="button"
+          class="next-btn"
+          (click)="nextStep()"
+          [disabled]="submitting">
+          {{ submitting ? 'Saving...' : 'Next' }}
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
