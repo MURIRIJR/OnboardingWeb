@@ -1,0 +1,411 @@
+/* ===================================
+   PAGE LAYOUT
+=================================== */
+
+.container {
+  min-height: 100vh;
+  padding: 40px;
+  background: #f6f7f9;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.card {
+  max-width: 1250px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #eef1f6;
+  box-shadow: 0 8px 30px rgba(12, 20, 60, 0.08);
+}
+
+/* ===================================
+   HEADER
+=================================== */
+
+.header {
+  background: linear-gradient(
+    135deg,
+    #1d2958,
+    #233772
+  );
+  color: #ffffff;
+  padding: 24px 30px;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.content {
+  padding: 30px;
+}
+
+/* ===================================
+   TITLE SECTION
+=================================== */
+
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.top-row h2 {
+  margin: 0;
+  color: #1f2a60;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+/* ===================================
+   NEW BUTTON
+=================================== */
+
+.new-btn {
+  background: #1f2a60;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.new-btn:hover {
+  background: #2b3f88;
+  transform: translateY(-2px);
+}
+
+/* ===================================
+   FILTERS
+=================================== */
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 25px;
+}
+
+.filters input,
+.filters select {
+  padding: 12px 16px;
+  border: 1px solid #dde3ed;
+  border-radius: 12px;
+  background: #ffffff;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.filters input {
+  width: 300px;
+}
+
+.filters input:focus,
+.filters select:focus {
+  outline: none;
+  border-color: #1f2a60;
+  box-shadow: 0 0 0 4px rgba(31, 42, 96, 0.1);
+}
+
+/* ===================================
+   STATUS MESSAGES
+=================================== */
+
+.loading-text {
+  margin-bottom: 15px;
+  color: #556274;
+}
+
+.error-text {
+  margin-bottom: 15px;
+  color: #d93025;
+  font-weight: 600;
+}
+
+/* ===================================
+   TABLE
+=================================== */
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+thead th {
+  background: #1f2a60;
+  color: #ffffff;
+  padding: 16px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+thead th:first-child {
+  border-top-left-radius: 12px;
+}
+
+thead th:last-child {
+  border-top-right-radius: 12px;
+}
+
+tbody tr {
+  transition: all 0.2s ease;
+}
+
+tbody tr:hover {
+  background: #f8faff;
+}
+
+tbody td {
+  padding: 18px 16px;
+  border-bottom: 1px solid #edf1f5;
+  color: #465167;
+  font-size: 14px;
+}
+
+/* ===================================
+   ACTION BUTTONS
+=================================== */
+
+.actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn {
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Open Button */
+
+.btn-open {
+  background: #1f2a60;
+  color: white;
+  border: none;
+}
+
+.btn-open:hover {
+  background: #2c3f85;
+}
+
+/* Delete Button */
+
+.btn-delete {
+  background: white;
+  color: #d93025;
+  border: 1px solid #d93025;
+}
+
+.btn-delete:hover {
+  background: #d93025;
+  color: white;
+}
+
+/* ===================================
+   STATUS BADGES
+=================================== */
+
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-pending {
+  background: #fff4d8;
+  color: #9b6a00;
+}
+
+.badge-completed {
+  background: #e8f7ef;
+  color: #157347;
+}
+
+.badge-rejected {
+  background: #fdeaea;
+  color: #c62828;
+}
+
+/* ===================================
+   FOOTER
+=================================== */
+
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #edf1f5;
+  color: #677588;
+  font-size: 14px;
+}
+
+/* ===================================
+   PAGINATION
+=================================== */
+
+.pager {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-page {
+  background: #ffffff;
+  border: 1px solid #1f2a60;
+  color: #1f2a60;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-page:hover:not(:disabled) {
+  background: #1f2a60;
+  color: white;
+}
+
+.btn-page:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ===================================
+   RESPONSIVE
+=================================== */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  .top-row {
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+  }
+
+  .filters {
+    flex-direction: column;
+  }
+
+  .filters input {
+    width: 100%;
+  }
+
+  .footer-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  table {
+    font-size: 13px;
+  }
+
+}
+.page-banner {
+  margin-bottom: 30px;
+  padding: 40px;
+  border-radius: 18px;
+  background: linear-gradient(
+      rgba(31,42,96,.85),
+      rgba(31,42,96,.85)
+    ),
+    url('/assets/banner.jpg');
+
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.page-banner h1 {
+  margin: 0 0 10px;
+  font-size: 36px;
+}
+
+.page-banner p {
+  margin: 0;
+  max-width: 600px;
+  opacity: 0.95;
+}
+
+.subtitle {
+  color: #77839a;
+  font-size: 14px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.employee-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #1f2a60;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.employee-name {
+  font-weight: 600;
+  color: #1f2a60;
+}
+
+.employee-subtitle {
+  font-size: 12px;
+  color: #8b96a8;
+}
+
+.progress-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress-bar {
+  width: 100px;
+  height: 8px;
+  background: #edf1f5;
+  border-radius: 20px;
+}
+
+.progress-fill {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background: #1f2a60;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  color: #8b96a8;
+}

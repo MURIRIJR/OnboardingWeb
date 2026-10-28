@@ -1,0 +1,118 @@
+<div class="container">
+  <div class="card">
+
+    <div class="header">Client Onboarding</div>
+
+    <div class="content">
+
+      <div class="top-row">
+        <h2>Onboardings</h2>
+        <button type="button" class="new-btn" routerLink="/onboardings/new">
+          + New Onboarding
+        </button>
+      </div>
+
+      <div class="filters">
+        <input
+          type="text"
+          placeholder="Search name or ID number"
+          [value]="searchText()"
+          (input)="onSearch($event)">
+
+        <select (change)="onStatusChange($event)">
+          <option value="All">Status: All</option>
+          <option value="DRAFT">Draft</option>
+          <option value="SUBMITTED">Submitted</option>
+        </select>
+      </div>
+
+      @if (loading()) {
+        <p class="loading-text">Loading...</p>
+      }
+
+      @if (errorMessage()) {
+        <p class="error-text">{{ errorMessage() }}</p>
+      }
+
+      <table>
+        <thead>
+          <tr>
+            <th>Client Name</th>
+            <th>ID Number</th>
+            <th>Status</th>
+            <th>Step</th>
+            <th>Last Updated</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (item of pagedOnboardings(); track item.id) {
+            <tr>
+              <td>{{ item.firstName }} {{ item.lastName }}</td>
+              <td>{{ item.idNumber }}</td>
+              <td>{{ item.status }}</td>
+              <td>{{ item.step }} of 3</td>
+              <td>
+                @if (item.lastUpdated) {
+                  {{ item.lastUpdated | date:'dd MMM yyyy' }}
+                } @else {
+                  —
+                }
+              </td>
+              <td>
+                <div class="actions">
+                  <button
+                    type="button"
+                    class="btn btn-open"
+                    (click)="openOnboarding(item)">
+                    Open
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-delete"
+                    (click)="deleteOnboarding(item.id)">
+                    Delete
+                  </button>
+                </div>
+              </td>
+            </tr>
+          } @empty {
+            @if (!loading()) {
+              <tr>
+                <td colspan="6">No onboardings found</td>
+              </tr>
+            }
+          }
+        </tbody>
+      </table>
+
+      <div class="footer-row">
+        <span>Rows per page: {{ pageSize }}</span>
+
+        <span>
+          {{ startRecord() }} to {{ endRecord() }} of {{ filteredOnboardings().length }}
+        </span>
+
+        <div class="pager">
+          <button
+            type="button"
+            class="btn btn-page"
+            (click)="previousPage()"
+            [disabled]="currentPage() === 1">
+            Previous
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-page"
+            (click)="nextPage()"
+            [disabled]="endRecord() >= filteredOnboardings().length">
+            Next
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
