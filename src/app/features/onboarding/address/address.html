@@ -1,0 +1,171 @@
+<div class="container">
+
+  <div class="card">
+
+    <div class="header">
+      Client Onboarding
+    </div>
+
+    <div class="body">
+
+      <div class="stepper">
+
+        <div class="step done">
+          <div class="circle">1</div>
+          <span>Personal</span>
+        </div>
+
+        <div class="step-line"></div>
+
+        <div class="step active">
+          <div class="circle">2</div>
+          <span>Address</span>
+        </div>
+
+        <div class="step-line"></div>
+
+        <div class="step">
+          <div class="circle">3</div>
+          <span>Review</span>
+        </div>
+
+      </div>
+
+      @if (serviceError) {
+        <p class="field-error">{{ serviceError }}</p>
+      }
+
+      <form [formGroup]="addressForm" novalidate>
+
+        <h3>Residential address</h3>
+
+        <div class="form-grid">
+
+          <div class="field">
+            <input type="text" formControlName="addressLine1" placeholder="Address line 1 *"
+                   [class.invalid]="isInvalid('addressLine1')">
+            @if (isInvalid('addressLine1')) { <small class="field-error">{{ errorOf('addressLine1') }}</small> }
+          </div>
+
+          <div class="field">
+            <input type="text" formControlName="addressLine2" placeholder="Address line 2">
+          </div>
+
+          <div class="field">
+            <input type="text" formControlName="suburbArea" placeholder="Suburb / area">
+          </div>
+
+          <div class="field">
+            <input type="text" formControlName="cityTown" placeholder="City / town *"
+                   [class.invalid]="isInvalid('cityTown')">
+            @if (isInvalid('cityTown')) { <small class="field-error">{{ errorOf('cityTown') }}</small> }
+          </div>
+
+          <div class="field">
+            <input type="text" formControlName="districtState" placeholder="District / state">
+          </div>
+
+          <div class="field">
+            <input type="text" formControlName="postalCode" placeholder="Postal code *"
+                   [class.invalid]="isInvalid('postalCode')">
+            @if (isInvalid('postalCode')) { <small class="field-error">{{ errorOf('postalCode') }}</small> }
+          </div>
+
+          <div class="field">
+            <select formControlName="country" [class.invalid]="isInvalid('country')">
+              <option value="">Country *</option>
+              @for (c of countries; track c) {
+                <option [value]="c">{{ c }}</option>
+              }
+            </select>
+            @if (isInvalid('country')) { <small class="field-error">{{ errorOf('country') }}</small> }
+          </div>
+
+          <div class="field">
+            <select formControlName="residentialStatus" [class.invalid]="isInvalid('residentialStatus')">
+              <option value="">Residential status *</option>
+              <option value="Owned">Owned</option>
+              <option value="Renting">Renting</option>
+              <option value="Family Home">Family Home</option>
+            </select>
+            @if (isInvalid('residentialStatus')) { <small class="field-error">{{ errorOf('residentialStatus') }}</small> }
+          </div>
+
+        </div>
+
+        <div class="field">
+          <label class="check">
+            <input type="checkbox" [formControl]="sameAsResidential">
+            <span>Postal address same as residential</span>
+          </label>
+        </div>
+
+        @if (!sameAsResidential.value) {
+
+          <h3>Postal address</h3>
+
+          <div class="form-grid" [formGroup]="postalForm">
+
+            <div class="field">
+              <input type="text" formControlName="addressLine1" placeholder="Address line 1 *"
+                     [class.invalid]="isInvalid('addressLine1', postalForm)">
+              @if (isInvalid('addressLine1', postalForm)) { <small class="field-error">{{ errorOf('addressLine1', postalForm) }}</small> }
+            </div>
+
+            <div class="field">
+              <input type="text" formControlName="addressLine2" placeholder="Address line 2">
+            </div>
+
+            <div class="field">
+              <input type="text" formControlName="suburbArea" placeholder="Suburb / area">
+            </div>
+
+            <div class="field">
+              <input type="text" formControlName="cityTown" placeholder="City / town *"
+                     [class.invalid]="isInvalid('cityTown', postalForm)">
+              @if (isInvalid('cityTown', postalForm)) { <small class="field-error">{{ errorOf('cityTown', postalForm) }}</small> }
+            </div>
+
+            <div class="field">
+              <input type="text" formControlName="districtState" placeholder="District / state">
+            </div>
+
+            <div class="field">
+              <input type="text" formControlName="postalCode" placeholder="Postal code *"
+                     [class.invalid]="isInvalid('postalCode', postalForm)">
+              @if (isInvalid('postalCode', postalForm)) { <small class="field-error">{{ errorOf('postalCode', postalForm) }}</small> }
+            </div>
+
+            <div class="field">
+              <select formControlName="country" [class.invalid]="isInvalid('country', postalForm)">
+                <option value="">Country *</option>
+                @for (c of countries; track c) {
+                  <option [value]="c">{{ c }}</option>
+                }
+              </select>
+              @if (isInvalid('country', postalForm)) { <small class="field-error">{{ errorOf('country', postalForm) }}</small> }
+            </div>
+
+          </div>
+
+        }
+
+        <div class="buttons">
+
+          <button type="button" class="cancel-btn" (click)="back()">
+            Back
+          </button>
+
+          <button type="button" class="next-btn" (click)="nextStep()" [disabled]="submitting">
+            {{ submitting ? 'Saving...' : 'Next' }}
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>

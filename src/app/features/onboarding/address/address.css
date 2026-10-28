@@ -1,0 +1,214 @@
+.container {
+  max-width: 1350px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #d6d2c9;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.header {
+  background: #ececec;
+  padding: 12px 16px;
+  font-weight: 600;
+  font-size: 16px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  padding: 20px 18px 25px 18px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  white-space: nowrap;
+  color: #555555;
+}
+
+.circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid #bdbdbd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  font-size: 12px;
+}
+
+.step.done .circle {
+  border-color: #555555;
+}
+
+.step.active .circle {
+  border: 2px solid #2563eb;
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.step.active span {
+  font-weight: 700;
+  color: #111111;
+}
+
+.step-line {
+  flex: 1;
+  height: 1px;
+  background: #dcdcdc;
+  margin: 0 12px;
+}
+
+form {
+  padding: 0 18px 18px 18px;
+}
+
+h3 {
+  margin: 20px 0 15px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px 22px;
+}
+
+/* Only text inputs and selects get the big field style (not checkboxes) */
+input[type="text"],
+select {
+  width: 100%;
+  height: 42px;
+  border: 1px solid #cfc9bd;
+  border-radius: 10px;
+  padding: 0 14px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #333333;
+  box-sizing: border-box;
+  background: white;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 34px;
+  background: #ffffff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23555555'/%3E%3C/svg%3E") no-repeat right 14px center;
+}
+
+input[type="text"]:focus,
+select:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* Checkbox row */
+.check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.check input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  flex: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.cancel-btn {
+  width: 100px;
+  height: 40px;
+  border: 1px solid #cfc9bd;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.cancel-btn:hover {
+  background: #f5f5f5;
+}
+
+.next-btn {
+  width: 100px;
+  height: 40px;
+  border: 2px solid #3b82f6;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+}
+
+.next-btn:hover {
+  background: #f8fbff;
+}
+
+.next-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-error {
+  color: #dc2626;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.invalid {
+  border-color: #dc2626 !important;
+}
+
+@media (max-width: 1024px) {
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stepper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .step-line {
+    display: none;
+  }
+}
