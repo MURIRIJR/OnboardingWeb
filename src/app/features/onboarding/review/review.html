@@ -1,0 +1,109 @@
+<div class="container">
+
+  <div class="card">
+
+    <div class="header">Client Onboarding</div>
+
+    <div class="body">
+
+      <div class="stepper">
+        <div class="step">
+          <div class="circle">1</div>
+          <span>Personal</span>
+        </div>
+
+        <div class="step-line"></div>
+
+        <div class="step">
+          <div class="circle">2</div>
+          <span>Address</span>
+        </div>
+
+        <div class="step-line"></div>
+
+        <div class="step active">
+          <div class="circle">3</div>
+          <span>Review</span>
+        </div>
+      </div>
+
+      @if (serviceError) {
+        <p class="error-text">{{ serviceError }}</p>
+      }
+
+      <!-- PERSONAL INFORMATION -->
+      <div class="review-card">
+
+        <div class="section-header">
+          <h3>Personal information</h3>
+          <a class="edit-link"
+             [routerLink]="['/onboardings', personalId, 'personal']"
+             [queryParams]="{ returnTo: 'review' }">Edit</a>
+        </div>
+
+        <div class="review-grid">
+          <div>
+            <p>Name: {{ personal.title }} {{ personal.firstName }} {{ personal.lastName }}</p>
+            <p>ID: {{ personal.idType }} {{ personal.idNumber }}</p>
+            <p>Email: {{ personal.email }}</p>
+            <p>Employment: {{ personal.employmentStatus }}</p>
+          </div>
+
+          <div>
+            <p>Date of birth: {{ personal.dateOfBirth | date:'dd MMM yyyy' }}</p>
+            <p>Nationality: {{ personal.nationality }}</p>
+            <p>Mobile: {{ personal.mobileNumber }}</p>
+            <p>Marital status: {{ personal.maritalStatus }}</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ADDRESS INFORMATION -->
+      <div class="review-card">
+
+        <div class="section-header">
+          <h3>Address information</h3>
+          <a class="edit-link"
+             [routerLink]="['/onboardings', personalId, 'address']"
+             [queryParams]="{ returnTo: 'review' }">Edit</a>
+        </div>
+
+        <div class="review-grid">
+          <div>
+            <p>
+              Residential:
+              {{ address.addressLine1 }}@if (address.addressLine2) {, {{ address.addressLine2 }}}@if (address.suburbArea) {, {{ address.suburbArea }}}, {{ address.cityTown }}@if (address.districtState) {, {{ address.districtState }}}, {{ address.postalCode }}, {{ address.country }}
+            </p>
+
+            @if (postal) {
+              <p>
+                Postal:
+                {{ postal.addressLine1 }}@if (postal.addressLine2) {, {{ postal.addressLine2 }}}@if (postal.suburbArea) {, {{ postal.suburbArea }}}, {{ postal.cityTown }}@if (postal.districtState) {, {{ postal.districtState }}}, {{ postal.postalCode }}, {{ postal.country }}
+              </p>
+            }
+          </div>
+
+          <div>
+            <p>Residential status: {{ address.residentialStatus }}</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="buttons">
+        <button type="button" class="back-btn" (click)="back()">Back</button>
+        <button
+          type="button"
+          class="submit-btn"
+          (click)="submit()"
+          [disabled]="submitting || !hasAddress">
+          {{ submitting ? 'Submitting...' : 'Submit' }}
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
